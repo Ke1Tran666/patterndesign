@@ -2,15 +2,7 @@
 
 import type React from "react";
 import { useState } from "react";
-import {
-  Scissors,
-  Menu,
-  X,
-  Facebook,
-  Instagram,
-  Youtube,
-  Linkedin,
-} from "lucide-react";
+import { Scissors, Menu, X } from "lucide-react";
 import Button from "./components/Button";
 import Card from "./components/Card";
 import Input from "./components/Input";
@@ -21,6 +13,7 @@ import ContactCard from "./components/ContactCard";
 import type { ContactInfo, FormData, ServiceCardData } from "./types";
 import { servicesData } from "./services/services";
 import { contactsData } from "./services/contacts";
+import UserFooter from "./components/layouts/user/UserFooter";
 
 const App: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -391,79 +384,7 @@ const App: React.FC = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-800 text-white py-12 px-4">
-        <div className="container max-w-full w-[1440px] mx-auto">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <Scissors className="h-6 w-6 text-blue-400" />
-                <span className="text-xl font-bold">
-                  Fashion Pattern Studio
-                </span>
-              </div>
-              <p className="text-gray-400 text-sm">
-                Chuyên gia thiết kế rập và sơ đồ may mặc hàng đầu Việt Nam
-              </p>
-            </div>
-
-            <div>
-              <h5 className="font-semibold mb-4">Dịch vụ</h5>
-              <ul className="space-y-2 text-sm text-gray-400">
-                <li className="space-x-2 hover:text-blue-400">
-                  Thiết kế rập cơ bản
-                </li>
-                <li className="space-x-2 hover:text-blue-400">
-                  Thiết kế rập cao cấp
-                </li>
-                <li className="space-x-2 hover:text-blue-400">
-                  Sơ đồ may chi tiết
-                </li>
-                <li className="space-x-2 hover:text-blue-400">
-                  Tư vấn sản xuất
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h5 className="font-semibold mb-4">Liên kết</h5>
-              <ul className="space-y-2 text-sm text-gray-400">
-                <li className="space-x-2 hover:text-blue-400">Về chúng tôi</li>
-                <li className="space-x-2 hover:text-blue-400">Portfolio</li>
-                <li className="space-x-2 hover:text-blue-400">Blog</li>
-                <li className="space-x-2 hover:text-blue-400">Liên hệ</li>
-              </ul>
-            </div>
-
-            <div>
-              <h5 className="font-semibold mb-4">Theo dõi</h5>
-              <ul className="space-y-2 text-sm text-gray-400">
-                <li className="flex items-center space-x-2 hover:text-blue-400 transition-colors cursor-pointer">
-                  <Facebook className="h-5 w-5" />
-                  <span>Facebook</span>
-                </li>
-                <li className="flex items-center space-x-2 hover:text-blue-400 transition-colors cursor-pointer">
-                  <Instagram className="h-5 w-5" />
-                  <span>Instagram</span>
-                </li>
-                <li className="flex items-center space-x-2 hover:text-blue-400 transition-colors cursor-pointer">
-                  <Youtube className="h-5 w-5" />
-                  <span>YouTube</span>
-                </li>
-                <li className="flex items-center space-x-2 hover:text-blue-400 transition-colors cursor-pointer">
-                  <Linkedin className="h-5 w-5" />
-                  <span>LinkedIn</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="border-t border-gray-700 mt-8 pt-8 text-center text-sm text-gray-400">
-            <p>
-              &copy; 2025 Fashion Pattern Studio. Tất cả quyền được bảo lưu.
-            </p>
-          </div>
-        </div>
-      </footer>
+      <UserFooter />
     </div>
   );
 };
