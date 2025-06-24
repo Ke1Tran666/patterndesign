@@ -2,7 +2,6 @@
 
 import type React from "react";
 import { useState } from "react";
-import { Scissors, Menu, X } from "lucide-react";
 import Button from "./components/Button";
 import Card from "./components/Card";
 import Input from "./components/Input";
@@ -10,13 +9,13 @@ import Textarea from "./components/Textarea";
 import Badge from "./components/Badge";
 import ServiceCard from "./components/ServiceCard";
 import ContactCard from "./components/ContactCard";
+import UserHeader from "./components/layouts/user/UserHeader";
+import UserFooter from "./components/layouts/user/UserFooter";
 import type { ContactInfo, FormData, ServiceCardData } from "./types";
 import { servicesData } from "./services/services";
 import { contactsData } from "./services/contacts";
-import UserFooter from "./components/layouts/user/UserFooter";
 
 const App: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [formData, setFormData] = useState<FormData>({
     name: "",
     phone: "",
@@ -53,11 +52,6 @@ const App: React.FC = () => {
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
-    setIsMenuOpen(false);
-  };
-
-  const toggleMenu = (): void => {
-    setIsMenuOpen(!isMenuOpen);
   };
 
   const portfolioItems: number[] = [1, 2, 3, 4, 5, 6];
@@ -65,91 +59,7 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50">
       {/* Header */}
-      <header className="bg-white shadow-sm sticky top-0 z-50">
-        <div className="container max-w-full w-[1440px] mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <Scissors className="h-8 w-8 text-blue-600" />
-            <h1 className="text-2xl font-bold text-gray-800">
-              Fashion Pattern Studio
-            </h1>
-          </div>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-6">
-            <button
-              onClick={() => scrollToSection("services")}
-              className="text-gray-600 hover:text-blue-600 transition-colors"
-            >
-              Dịch vụ
-            </button>
-            <button
-              onClick={() => scrollToSection("portfolio")}
-              className="text-gray-600 hover:text-blue-600 transition-colors"
-            >
-              Portfolio
-            </button>
-            <button
-              onClick={() => scrollToSection("about")}
-              className="text-gray-600 hover:text-blue-600 transition-colors"
-            >
-              Giới thiệu
-            </button>
-            <button
-              onClick={() => scrollToSection("contact")}
-              className="text-gray-600 hover:text-blue-600 transition-colors"
-            >
-              Liên hệ
-            </button>
-          </nav>
-
-          <div className="flex items-center space-x-4">
-            <Button onClick={() => scrollToSection("contact")}>
-              Tư vấn miễn phí
-            </Button>
-
-            {/* Mobile Menu Button */}
-            <button className="md:hidden p-2" onClick={toggleMenu}>
-              {isMenuOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden bg-white border-t">
-            <div className="px-4 py-2 space-y-2">
-              <button
-                onClick={() => scrollToSection("services")}
-                className="block w-full text-left py-2 text-gray-600 hover:text-blue-600"
-              >
-                Dịch vụ
-              </button>
-              <button
-                onClick={() => scrollToSection("portfolio")}
-                className="block w-full text-left py-2 text-gray-600 hover:text-blue-600"
-              >
-                Portfolio
-              </button>
-              <button
-                onClick={() => scrollToSection("about")}
-                className="block w-full text-left py-2 text-gray-600 hover:text-blue-600"
-              >
-                Giới thiệu
-              </button>
-              <button
-                onClick={() => scrollToSection("contact")}
-                className="block w-full text-left py-2 text-gray-600 hover:text-blue-600"
-              >
-                Liên hệ
-              </button>
-            </div>
-          </div>
-        )}
-      </header>
+      <UserHeader onScrollToSection={scrollToSection} />
 
       {/* Hero Section */}
       <section className="py-20 px-4">
